@@ -20,7 +20,7 @@ def index():
     #     # flash('Team has been created successfully')
     #     return redirect(url_for('.index'))
     # # team = Team.query.all()
-    title= 'moringa'
+    title= 'Coachya'
     return render_template('index.html',title = title)
 
 
