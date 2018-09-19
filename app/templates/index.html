@@ -1,16 +1,40 @@
 {% extends 'base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
 <!--Styles block-->
 
 <!-- Content block -->
 
 {% block content %}
+<div class="row">
+  <div class="col-md-6">
+    {% for coach in coaches %}
+        <p>{{ coach.name }}</p>
+        <p>{{ coach.support_to_provide }}</p>
 
-<!-- Blog Category -->
-<h3> Welcome to Coachya </h3>
-<h4>List of Teams</h4>
-<p>For Coaches, please choose any of the teams below to support</p>
+        {% endfor %}
 
+  </div>
+  <div class="col-md-6">
+    {% for team in teams %}
 
+    <!-- Blog Category -->
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <img src="{{team.avatar(36)}}" alt="avatar">
+          </div>
+          <div class="col-md-10">
+            <h3>{{team.teamname}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-md" style="background-color: white;" href="/details/{{team.id}}">Team Details</a>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock%}

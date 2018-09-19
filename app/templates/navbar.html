@@ -9,6 +9,14 @@
       <li class="nav-item active">
         <a style="color:white;" class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="coloer:white;">
+          New Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/profile/add">New Team</a>
+          <a class="dropdown-item" href="/coach/add">New Sponsor</a>
+      </li>
     </ul>
      <ul class="nav navbar-nav navbar-right">
           {% if current_user.is_authenticated %}
@@ -21,4 +29,3 @@
      </ul>
   </div>
 </nav>
-

@@ -4,32 +4,31 @@ from flask_login import login_required, current_user
 # from .. import db
 from ..models import Profile
 # from app import login_manager
-from .forms import ProfileForm
+from .forms import ProfileForm, CoachForm
 
 @main.route('/')
 def index():
     '''
     View page function that creates and returns the post titles on the index page
     '''
+    teams = Profile.query.all()
+    coaches = Coach.query.all()
 
-    form = ProfileForm()
-
-    # if form.validate_on_submit():
-    #     new_team = Team(actual_post=form.post.data, user_id=current_user.id)
-    #     # new_team.save_post()
-    #     # flash('Team has been created successfully')
-    #     return redirect(url_for('.index'))
-    # # team = Team.query.all()
     title= 'Coachya'
-    return render_template('index.html',title = title)
+    return render_template('index.html',title = title,teams = teams,coaches=coaches)
 
-
-
-
+@main.route('/details/<id>')
+def details(id):
+    '''
+    returns the details of the team selected
+    '''
+    team = Profile.get_profiles(id)
+    title = 'Team Details'
+    return render_template('details.html', title = title, teams = team)
 
 @main.route('/profile/add',methods = ['GET','POST'])
-# @login_required
-def new_profile():
+@login_required
+def new_team():
     '''
     View pitch function that returns the pitch page and data
     '''
@@ -40,10 +39,33 @@ def new_profile():
         vision = form.vision.data
         mission = form.mission.data
         members = form.members.data
+        support = form.support.data
 
-        new_profile = Profile(teamname=teamname,vision=vision,mision=mission,members=members,user_id=current_user.id)
+
+
+        new_profile = Profile(teamname=teamname,vision=vision,mission=mission,members=members,support = support,user_id=current_user.id)
         new_profile.save_profile()
         flash('Profile has been created!', 'success')
-        return redirect(url_for('main.home'))
+        return redirect(url_for('main.index'))
 
     return render_template('new_profile.html', profile_form = form)
+
+@main.route('/coach/add',methods = ['GET','POST'])
+# @login_required
+def new_coach():
+    '''
+    View pitch function that returns the pitch page and data
+    '''
+    form = CoachForm()
+
+    if form.validate_on_submit():
+        name = form.name.data
+        support_to_provide = form.support_to_provide.data
+
+
+        new_coach = Coach(name=name,support_to_provide=support_to_provide,user_id=current_user.id)
+        new_coach.save_coach()
+        flash('Profile has been created!', 'success')
+        return redirect(url_for('main.index'))
+
+    return render_template('new_coach.html', coach_form = form)

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<!--Styles block-->
+
+<!-- Content block -->
+
+{% block content %}
+{% for team in teams %}
+
+<!-- Blog Category -->
+<div class="card">
+  <div class="card-body">
+    <p><b>Vission:</b> {{team.vision}}</p>
+    <p><b>Mission:</b> {{team.mission}}</p>
+    <p><b>Members:</b> {{team.members}}</p>
+    <p><b>Support Needed:</b> {{team.support}}</p>
+    </div>
+  </div>
+
+
+{% endfor %}
+{% endblock%}

@@ -8,4 +8,10 @@ class ProfileForm(FlaskForm):
     vision = StringField('Team Vision',validators = [Required()])
     mission = TextAreaField('Team Mission',validators = [Required()])
     members = TextAreaField('Add Team Members',validators = [Required()])
+    support = TextAreaField('Support Needed', validators = [Required()])
+    submit = SubmitField('Submit')
+
+class CoachForm(FlaskForm):
+    name = StringField('Name',validators=[Required()])
+    support_to_provide = TextAreaField('Support to Provide',validators = [Required()])
     submit = SubmitField('Submit')

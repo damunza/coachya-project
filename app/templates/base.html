@@ -5,9 +5,26 @@
     {{super()}}
     <link rel="stylesheet" href="{{url_for('static',filename='css/post.css')}}">
 {% endblock %}
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 {% block navbar %}
     {% include 'navbar.html' %}
 {% endblock %}
 
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Welcome to Pitches </title>
+    {% endif %}
+  </head>
+  <body>
+
+    {% block content %}
+
+    {% endblock %}
+
+  </body>
+</html>
