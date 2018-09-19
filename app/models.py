@@ -46,6 +46,7 @@ class Profile(db.Model):
     vision = db.Column(db.String(255))
     mission = db.Column(db.String())
     support = db.Column(db.String(255))
+    location = db.Column(db.String(255))
     members = db.Column(db.String)
     description= db.Column(db.String)
     email = db.Column(db.String(255), unique=True, index=True)

@@ -42,8 +42,9 @@ def new_team():
         support = form.support.data
         description = form.description.data
         email = form.email.data
+        location = form.location.data
 
-        new_profile = Profile(teamname=teamname,vision=vision,mission=mission,members=members,support = support,email = email, description = description,user_id=current_user.id)
+        new_profile = Profile(teamname=teamname,vision=vision,mission=mission,members=members,support = support,email = email,location = location, description = description,user_id=current_user.id)
         new_profile.save_profile()
         flash('Profile has been created!', 'success')
         return redirect(url_for('main.index'))
