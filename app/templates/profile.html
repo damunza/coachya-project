@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<div class="row">
+  <div class="col-md-6">
+    {{user.username}}
+  </div>
+  <div class="col-md-6">
+    {% for profile in profiles %}
+      <div class="card">
+        <div class="card-title">
+          <h3><span><b>Team Name</b></span>{{profile.teamname}}</h3>
+        </div>
+        <div class="card-body">
+          <h4>Description</h4>
+          <p>{{profile.description}}</p>
+        </div>
+        <div class="card-footer">
+          <a style="background-color:white;" class="btn btn-md" href="/">view messages</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

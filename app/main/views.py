@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, abort, flash
 from . import main
 from flask_login import login_required, current_user
 # from .. import db
-from ..models import Profile, Coach
+from ..models import Profile, Coach, User
 # from app import login_manager
 from .forms import ProfileForm, CoachForm
 
@@ -71,3 +71,16 @@ def new_coach():
         return redirect(url_for('main.index'))
 
     return render_template('new_coach.html', coach_form = form)
+
+@main.route('/user/<uname>')
+@login_required
+def profile(uname):
+    '''
+    diaplaying the profile page
+    '''
+    user = User.query.filter_by(username=uname).first()
+
+    profile = Profile.query.filter_by(id = current_user.id).all()
+
+    title = uname
+    return render_template('profile.html',user = user, profiles = profile, title = title)
