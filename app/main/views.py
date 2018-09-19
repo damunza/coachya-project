@@ -41,8 +41,9 @@ def new_team():
         members = form.members.data
         support = form.support.data
         description = form.description.data
+        email = form.email.data
 
-        new_profile = Profile(teamname=teamname,vision=vision,mission=mission,members=members,support = support,description = description,user_id=current_user.id)
+        new_profile = Profile(teamname=teamname,vision=vision,mission=mission,members=members,support = support,email = email, description = description,user_id=current_user.id)
         new_profile.save_profile()
         flash('Profile has been created!', 'success')
         return redirect(url_for('main.index'))
@@ -60,9 +61,10 @@ def new_coach():
     if form.validate_on_submit():
         name = form.name.data
         support_to_provide = form.support_to_provide.data
+        description = form.description.data
 
 
-        new_coach = Coach(name=name,support_to_provide=support_to_provide,user_id=current_user.id)
+        new_coach = Coach(name=name,support_to_provide=support_to_provide,description = description, user_id=current_user.id)
         new_coach.save_coach()
         flash('Profile has been created!', 'success')
         return redirect(url_for('main.index'))
