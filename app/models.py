@@ -48,6 +48,8 @@ class Profile(db.Model):
     support = db.Column(db.String(255))
     members = db.Column(db.String)
     description= db.Column(db.String)
+    email = db.Column(db.String(255), unique=True, index=True)
+
     # Foreign key from users table to link teams and profiles
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
@@ -80,9 +82,10 @@ class Coach(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String)
     support_to_provide = db.Column(db.String())
+    description = db.Column(db.String())
     # Foreign key from users table to link teams and profiles
     user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
-    # coaches = db.relationship("User", backref="coaches", lazy="dynamic")
+
 
     def avatar(self, size):
         digest = md5(self.name.lower().encode('utf-8')).hexdigest()

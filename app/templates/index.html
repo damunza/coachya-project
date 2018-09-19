@@ -15,8 +15,8 @@
             <img src="{{coach.avatar(39)}}" alt="avatar">
           </div>
           <div class="col-md-10">
-            <h3>{{ coach.name }}</h3>
-            <p>{{ coach.support_to_provide }}</p>
+            <h3><span><b>Name</b></span> {{ coach.name }}</h3>
+            <p><span><b>Support Providing</b></span> {{ coach.support_to_provide }}</p>
           </div>
         </div>
       </div>
@@ -37,7 +37,9 @@
             <img src="{{team.avatar(36)}}" alt="avatar">
           </div>
           <div class="col-md-10">
-            <h3>{{team.teamname}}</h3>
+            <h3><span><b>Team name:</b></span> {{team.teamname}}</h3><br>
+            <h5><b>Team Description</b></h5>
+            <p> {{team.description}}</p>
           </div>
         </div>
       </div>
