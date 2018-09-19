@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for m in message %}
+<div class="card">
+  <div class="card-title">
+    <h3><span>
+      <b>Author:</b> {{m.username}}
+    </span></h3>
+  </div>
+  <div class="card-body">
+    <p>{{m.message}}</p>
+    <p>{{m.email}}</p>
+  </div>
+</div>
+
+{% endfor %}
+{% endblock %}

@@ -123,6 +123,6 @@ class Message(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_comment(cls, id):
-        comment = Comment.query.filter_by(profile_id=id).all()
-        return comment
+    def get_message(cls, id):
+        message = Message.query.filter_by(profile_id=id).all()
+        return message

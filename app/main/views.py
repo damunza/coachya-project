@@ -101,3 +101,13 @@ def new_message(id):
     title = 'New Message'
     return render_template('new_message.html', title = title, message_form = form)
 
+@main.route('/message/<id>')
+@login_required
+def viewmessage(id):
+    '''
+    function to return the comments
+    '''
+    message = Message.get_message(id)
+    print(message)
+    title = 'messages'
+    return render_template('message.html',title = title, message = message)
