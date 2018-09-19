@@ -47,6 +47,7 @@ class Profile(db.Model):
     mission = db.Column(db.String())
     support = db.Column(db.String(255))
     members = db.Column(db.String)
+    description= db.Column(db.String)
     # Foreign key from users table to link teams and profiles
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
