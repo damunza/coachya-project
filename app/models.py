@@ -22,6 +22,7 @@ class User(UserMixin,db.Model):
     pass_secure = db.Column(db.String(255))
     profile = db.relationship("Profile", backref="user", lazy="dynamic")
     coach = db.relationship("Coach", backref="user", lazy="dynamic")
+    message = db.relationship("Message",backref = "user", lazy = "dynamic")
 
     @property
     def password(self):
@@ -50,6 +51,7 @@ class Profile(db.Model):
     members = db.Column(db.String)
     description= db.Column(db.String)
     email = db.Column(db.String(255), unique=True, index=True)
+    message = db.relationship("Message", backref="teamname", lazy="dynamic")
 
     # Foreign key from users table to link teams and profiles
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
@@ -105,3 +107,22 @@ class Coach(db.Model):
 
     def __repr__(self):
         return f'Coach {self.name}'
+
+class Message(db.Model):
+
+    __tablename__ = 'messages'
+
+    id = db.Column(db.Integer, primary_key=True)
+    message = db.Column(db.String)
+    email = db.Column(db.String(255))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    profile_id = db.Column(db.Integer, db.ForeignKey("profiles.id"))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comment(cls, id):
+        comment = Comment.query.filter_by(profile_id=id).all()
+        return comment

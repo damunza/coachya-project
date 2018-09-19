@@ -2,9 +2,9 @@ from flask import render_template, request, redirect, url_for, abort, flash
 from . import main
 from flask_login import login_required, current_user
 # from .. import db
-from ..models import Profile, Coach, User
+from ..models import Profile, Coach, User, Message
 # from app import login_manager
-from .forms import ProfileForm, CoachForm
+from .forms import ProfileForm, CoachForm, MessageForm
 
 @main.route('/')
 def index():
@@ -84,3 +84,20 @@ def profile(uname):
 
     title = uname
     return render_template('profile.html',user = user, profiles = profile, title = title)
+
+@main.route('/new_message/<int:id>', methods = ['GET', 'POST'])
+def new_message(id):
+    form = MessageForm()
+
+    if form.validate_on_submit():
+        mes = form.message.data
+        email = form.email.data
+
+        new_comment = Message(message = mes, profile_id = id, user_id= current_user.id,email = email)
+        new_comment.save_comment()
+
+        return redirect(url_for('main.index'))
+
+    title = 'New Message'
+    return render_template('new_message.html', title = title, message_form = form)
+

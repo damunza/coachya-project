@@ -19,3 +19,8 @@ class CoachForm(FlaskForm):
     support_to_provide = TextAreaField('Support to Provide',validators = [Required()])
     description = TextAreaField('What You Want', validators=[Required()])
     submit = SubmitField('Submit')
+
+class MessageForm(FlaskForm):
+    message = TextAreaField('Write Text',validators = [Required()])
+    email = StringField('Your Email Address', validators=[Required(), Email()])
+    submit = SubmitField('Send')
