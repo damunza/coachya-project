@@ -84,7 +84,7 @@ class Coach(db.Model):
     # coaches = db.relationship("User", backref="coaches", lazy="dynamic")
 
     def avatar(self, size):
-        digest = md5(self.teamname.lower().encode('utf-8')).hexdigest()
+        digest = md5(self.name.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
 

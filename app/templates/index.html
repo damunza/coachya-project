@@ -7,8 +7,19 @@
 <div class="row">
   <div class="col-md-6">
     {% for coach in coaches %}
-        <p>{{ coach.name }}</p>
-        <p>{{ coach.support_to_provide }}</p>
+    <div class="card">
+      <div class="car-body">
+        <div class="row">
+          <div class="col-md-2">
+            <img src="{{coach.avatar(38)}}" alt="avatar">
+          </div>
+          <div class="col-md-10">
+            <h3>{{ coach.name }}</h3>
+            <p>{{ coach.support_to_provide }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
         {% endfor %}
 
