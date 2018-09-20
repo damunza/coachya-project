@@ -52,7 +52,7 @@ def new_team():
     return render_template('new_profile.html', profile_form = form)
 
 @main.route('/coach/add',methods = ['GET','POST'])
-# @login_required
+@login_required
 def new_coach():
     '''
     View pitch function that returns the pitch page and data
