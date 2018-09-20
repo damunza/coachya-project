@@ -80,7 +80,7 @@ def profile(uname):
     '''
     user = User.query.filter_by(username=uname).first()
 
-    profile = Profile.query.filter_by(id = current_user.id).all()
+    profile = Profile.query.filter_by(user_id = current_user.id).all()
 
     title = uname
     return render_template('profile.html',user = user, profiles = profile, title = title)

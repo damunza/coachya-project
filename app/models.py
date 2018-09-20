@@ -36,7 +36,7 @@ class User(UserMixin,db.Model):
         return check_password_hash(self.pass_secure, password)
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f'{self.username}'
 
 
 class Profile(db.Model):
@@ -67,7 +67,7 @@ class Profile(db.Model):
 
     @classmethod
     def get_profiles(cls, id):
-        profiles = Profile.query.filter_by(id=id).all()
+        profiles = Profile.query.filter_by(user_id=id).all()
         return profiles
 
     @classmethod
