@@ -10,7 +10,7 @@
         <a style="color:white;" class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="coloer:white;">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
           New Profile
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -21,7 +21,7 @@
      <ul class="nav navbar-nav navbar-right">
           {% if current_user.is_authenticated %}
           <li style="color:white;padding:15px;">
-            <a href="/user/{{current_user.username}}">{{current_user.username}}</a></li>
+            <a style="color:white;" href="/user/{{current_user.username}}">{{current_user.username}}</a></li>
           <li><a href="{{url_for('auth.logout')}}"style='color:white;'>Sign out</a></li>
           {% else %}
           <li><a href="{{url_for('auth.login')}}"style="color:white;">Sign in</a></li>
