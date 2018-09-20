@@ -112,3 +112,12 @@ def viewmessage(id):
     print(message)
     title = 'messages'
     return render_template('message.html',title = title, message = message)
+
+
+@main.route('/about')
+def about():
+    '''
+    function that returns the about page
+    '''
+    title = 'About'
+    return render_template('about.html', title = title)

@@ -8,6 +8,11 @@
     <h3><span>
       <b>Author:</b> {{m.user}}
     </span></h3>
+    <h5>
+      <span>
+          <b>Last seen</b> {{moment(m.user.last_seen).calendar()}}
+      </span>
+    </h5>
   </div>
   <div class="card-body">
     <p>{{m.message}}</p>

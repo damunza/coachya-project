@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap
 from config import config_options
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask_moment import Moment
 
 
 # Initiating login manager
@@ -12,6 +13,7 @@ login_manager=LoginManager()
 # Initialaizing Flask extensions
 bootstrap = Bootstrap()
 db = SQLAlchemy()
+moment = Moment()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -24,6 +26,9 @@ def create_app(config_name):
 
     # Initializing bootstrap
     bootstrap.init_app(app)
+
+    moment.init_app(app)
+
 
     # Initializing sqlalchemy database
     db.init_app(app)

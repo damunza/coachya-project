@@ -4,6 +4,7 @@
 <!-- Content block -->
 
 {% block content %}
+<body>
 <div class="row">
   <div class="col-md-6">
     <h2 style="text-align:centre;">Sponsors</h2>
@@ -56,5 +57,14 @@
     {% endfor %}
   </div>
 </div>
-
+</body>
+<style>
+   body{
+    background: url(/static/photos/background2.jpeg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
 {% endblock%}

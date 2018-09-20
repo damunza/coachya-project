@@ -19,6 +19,7 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_pah = db.Column(db.String())
     joined = db.Column(db.DateTime, default=datetime.utcnow)
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     pass_secure = db.Column(db.String(255))
     profile = db.relationship("Profile", backref="user", lazy="dynamic")
     coach = db.relationship("Coach", backref="user", lazy="dynamic")
