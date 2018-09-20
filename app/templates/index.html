@@ -47,7 +47,9 @@
       </div>
       <div class="card-footer">
         <a class="btn btn-md" style="background-color: white;" href="/details/{{team.id}}">Team Details</a>
+        {% if current_user.is_authenticated %}
         <a class="btn btn-md" style="background-color: white; float: right;" href="/new_message/{{team.id}}">Message Team</a>
+        {%endif%}
       </div>
     </div>
 

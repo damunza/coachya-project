@@ -86,6 +86,7 @@ def profile(uname):
     return render_template('profile.html',user = user, profiles = profile, title = title)
 
 @main.route('/new_message/<int:id>', methods = ['GET', 'POST'])
+@ login_required
 def new_message(id):
     form = MessageForm()
 
