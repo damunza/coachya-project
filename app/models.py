@@ -68,7 +68,7 @@ class Profile(db.Model):
 
     @classmethod
     def get_profiles(cls, id):
-        profiles = Profile.query.filter_by(user_id=id).all()
+        profiles = Profile.query.filter_by(id=id).all()
         return profiles
 
     @classmethod

@@ -21,10 +21,7 @@ class ProdConfig(Config):
     '''
     This is the production configuration child class
     '''
-    # SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_JADE_URL")
-
-    pass
-
+    SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_JADE_URL")
 
 class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://daniel:dan15done@localhost/coachya'
